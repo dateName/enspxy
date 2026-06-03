@@ -22,15 +22,28 @@
 
 ---
 
-## 🧩 关键技术详解
-
 ### 1️⃣ VLAN + DHCP —— 动态隔离与自动接入
 
 - **VLAN**：将实验楼、教学楼、宿舍区等划分为独立 VLAN（如 VLAN 100 / 200 / 400），隔离广播域，提高安全性。
 - **DHCP**：每个 VLAN 对应一个 DHCP 地址池，终端自动获取 IP，无需手动配置。
 
+**常用查询命令**：
+
 ```plaintext
-示例：VLAN 100（实验楼）
-- IP 池：192.168.1.0/24
-- 网关：192.168.1.254
-- DNS：30.1.1.100
+# 查看所有 VLAN 信息
+display vlan
+
+# 查看指定 VLAN（如 VLAN 100）的详细信息
+display vlan 100
+
+# 查看 DHCP 全局地址池
+display ip pool
+
+# 查看指定 DHCP 地址池的配置
+display ip pool name vlan100
+
+# 查看 VLANIF 接口的 IP 配置
+display interface Vlanif 100
+
+# 查看接口下 DHCP 服务器状态
+display dhcp server interface Vlanif 100
